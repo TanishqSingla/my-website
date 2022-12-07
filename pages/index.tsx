@@ -59,7 +59,7 @@ export default function Home() {
 				<div>
 					<h3>Download my resume</h3>
 					<div className="social-links">
-						<a href="" download className="px-4">
+						<a href="../public/resume.pdf" download className="px-4">
 							<IoMdDownload color="#344e41" size="24" />
 							Resume
 						</a>

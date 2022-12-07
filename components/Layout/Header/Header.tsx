@@ -37,7 +37,7 @@ export default function () {
 				<div className="theme-switcher">
 					<button onClick={handleThemeSwitch}>
 						{isDark ? (
-							<BsSun size="24" color="black" />
+							<BsSun color="black" />
 						) : (
 							<BsMoonFill color="white" />
 						)}
