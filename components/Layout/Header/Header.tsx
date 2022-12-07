@@ -1,9 +1,24 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsSun, BsMoonFill } from "react-icons/bs";
 
 export default function () {
 	const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const wasDarkMode = localStorage.getItem('darkMode');
+
+    if(wasDarkMode === "true") {
+      setIsDark(true);
+      document.body.classList.add('dark');
+    }
+  }, []);
+
+  const handleThemeSwitch = () => {
+    setIsDark(!isDark);
+    localStorage.setItem("darkMode", String(!isDark));
+    document.body.classList.toggle("dark");
+  }
 
 	return (
 		<header className="bg-gray-200/40 dark:bg-stone-700/40 dark:text-white sticky w-full px-4 py-4 top-4 self-start my-4 rounded-xl backdrop-blur-sm">
@@ -20,7 +35,7 @@ export default function () {
 					</li>
 				</ul>
 				<div className="theme-switcher">
-					<button onClick={() => setIsDark(!isDark)}>
+					<button onClick={handleThemeSwitch}>
 						{isDark ? (
 							<BsSun size="24" color="black" />
 						) : (

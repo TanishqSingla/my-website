@@ -4,7 +4,7 @@
 
 @layer components {
 	.text-defaults {
-		@apply dark:text-white text-stone-700;
+		@apply dark:text-surface text-stone-700;
 	}
 	.highlight {
 		@apply text-primary-100 dark:text-accent;
@@ -19,7 +19,11 @@
 
 body {
 	font-family: "Poppins", sans-serif;
-	@apply bg-surface dark:bg-stone-900 selection:text-surface selection:bg-primary-200;
+  transition: .3s ease-in;
+	@apply bg-surface selection:text-surface selection:bg-primary-200;
+}
+.dark {
+  @apply bg-stone-900
 }
 
 h1 {
@@ -30,6 +34,9 @@ h2 {
 }
 h3 {
 	@apply text-defaults sm:text-2xl text-xl my-2;
+}
+p {
+  @apply text-defaults
 }
 
 main {
