@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsSun, BsMoonFill } from "react-icons/bs";
 
-export default function () {
+export default function Header() {
 	const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {

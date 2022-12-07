@@ -4,7 +4,7 @@ type LayoutProps = {
 	children: React.ReactNode;
 };
 
-export default function (props: LayoutProps) {
+export default function Layout(props: LayoutProps) {
 	return (
 		<div className="container">
 			<Header />
