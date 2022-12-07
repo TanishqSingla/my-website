@@ -27,40 +27,45 @@ export default function Home() {
 				<meta name="description" content="Tanishq Singla's website" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div>
-				<h1>
-					<span className="highligh">Hello</span> there.
-				</h1>
-				<h1>
-					Welcome to <span className="highlight">Tanishq</span>
-				</h1>
-			</div>
-			<div className="about-me py-2">
-				<h3>About me</h3>
-				<p className="indent-4">
-					I am a fullstack developer and I like to love to make webapps
-				</p>
-			</div>
-			<div className="social">
-				<h3>Find me on</h3>
-				<div className="social-links">
-					{socials.map((social) => (
-						<a href={social.link} key={social.name}>
-							{social.logo}
-							{social.name}
+			<main className="sm:space-y-8 space-y-4">
+				<div className="space-y-4">
+					<h1>
+						<span className="highlight">Hello</span> there.
+					</h1>
+					<h1>
+						Welcome to <span className="highlight">my website.</span>
+					</h1>
+					<h1>
+						I am <span className="highlight">Tanishq</span>
+					</h1>
+				</div>
+				<div className="about-me py-2">
+					<h3>About me</h3>
+					<p className="indent-4">
+						I am a fullstack developer and I love to develop web-applicaitons.
+					</p>
+				</div>
+				<div className="social">
+					<h3>Find me on</h3>
+					<div className="social-links">
+						{socials.map((social) => (
+							<a href={social.link} key={social.name}>
+								{social.logo}
+								{social.name}
+							</a>
+						))}
+					</div>
+				</div>
+				<div>
+					<h3>Download my resume</h3>
+					<div className="social-links">
+						<a href="" download className="px-4">
+							<IoMdDownload color="#344e41" size="24" />
+							Resume
 						</a>
-					))}
+					</div>
 				</div>
-			</div>
-			<div>
-				<h3>Dowload resume</h3>
-				<div className="social-links">
-					<a href="" download className="px-4">
-						<IoMdDownload color="#344e41" size="24" />
-						Resume
-					</a>
-				</div>
-			</div>
+			</main>
 		</>
 	);
 }
