@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getPostData } from "../../lib/posts";
 
 type BlogProps = {
@@ -13,11 +14,11 @@ type BlogProps = {
 export default function Blog({ posts }: BlogProps) {
 	return (
 		<main>
-			<ul className="sm:space-y-8 space-y-4">
+			<ul>
 				{posts.map((post) => (
 					<li key={post.date}>
-						<h3 className="highlight font-bold">{post.title}</h3>{" "}
-						<p className="text-xs">
+						<Link href={`/blog/posts/${post.id}`}><h2 className="highlight font-bold mb-2">{post.title}</h2></Link>
+						<p className="text-xs opacity-60">
 							{new Date(post.date).toUTCString().substring(0, 16)}
 						</p>
 					</li>

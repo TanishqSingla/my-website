@@ -50,3 +50,13 @@ main {
 	transition: 0.3s ease-in;
 	@apply h-12 w-32 flex items-center justify-center gap-2 hover:bg-white rounded-md text-primary-100;
 }
+
+.post-content > h2,h3,h4 {
+	@apply my-6
+}
+.post-content strong {
+	@apply dark:text-neutral-500 text-neutral-800
+}
+.post-content > p {
+	@apply mb-2
+}

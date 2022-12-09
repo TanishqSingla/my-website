@@ -14,7 +14,7 @@ If you work in a company that works on a particular piece of technology then thi
 
 ## My Review of the book
 
-The book starts with a brief history of various movements in manufacturing sector namely **The Lean Movement**, **Toyota kata** as well as movements in technology sector such as **The Agile Manifesto** and The **Continuous Delivery Movement**, and explains how all this resulted in what we call today DevOps.
+The book starts with a brief history of various movements in manufacturing sector namely **The Lean Movement**, **Toyota kata** as well as movements in technology sector such as **The Agile Manifesto** and **The Continuous Delivery Movement**, and explains how all this resulted in what we call today DevOps.
 
 Further into the book we encounter the concept of value stream, which the book centres around a lot. Value stream especially technology value stream is defined as the process required to convert a business hypothesis into a technology-enabled service that delivers value to the customers. The book explains the various parts of the value stream both in manufacturing sector and relates it with the different phases in technology sector.
 
