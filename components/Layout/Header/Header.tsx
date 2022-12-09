@@ -27,11 +27,11 @@ export default function Header() {
 					<li>
 						<Link href="/">Home</Link>
 					</li>
-					<li>
+					{/* <li>
 						<Link href="/projects">Projects</Link>
-					</li>
+					</li> */}
 					<li>
-						<Link href="/blogs">Blog</Link>
+						<Link href="/blog">Blog</Link>
 					</li>
 				</ul>
 				<div className="theme-switcher">

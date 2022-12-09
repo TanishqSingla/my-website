@@ -17,9 +17,9 @@ export function getPostData() {
 
 		return {
 			id,
-			...(matterResult.data as { title: string; date: Date }),
+			...(matterResult.data as { title: string; date: string }),
 		};
 	});
 
-	return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+	return posts.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 }
