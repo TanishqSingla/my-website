@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { remark } from "remark";
+import html from 'remark-html'
 
 const postDirectory = path.join(process.cwd(), "posts");
 
@@ -22,4 +24,35 @@ export function getPostData() {
 	});
 
 	return posts.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+}
+
+export function getPostsIds() {
+	const fileName = fs.readdirSync(postDirectory);
+
+	return fileName.map((fileName) => {
+		return {
+			params: {
+				id: fileName.replace(/\.md$/, ""),
+			},
+		};
+	});
+}
+
+export async function getPostContent(id: string) {
+	const fullPath = path.join(postDirectory, `${id}.md`);
+	const fileContents = fs.readFileSync(fullPath, "utf-8");
+
+	const matterResult = matter(fileContents);
+
+	const processedContent = await remark()
+		.use(html)
+		.process(matterResult.content);
+
+	const contentHTML = processedContent.toString();
+
+	return {
+		id,
+		contentHTML,
+		...matterResult.data
+	}
 }
