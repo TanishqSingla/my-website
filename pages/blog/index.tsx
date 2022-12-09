@@ -14,11 +14,11 @@ type BlogProps = {
 export default function Blog({ posts }: BlogProps) {
 	return (
 		<main>
-			<ul>
+			<ul className="space-y-8">
 				{posts.map((post) => (
 					<li key={post.date}>
-						<Link href={`/blog/posts/${post.id}`}><h2 className="highlight font-bold mb-2">{post.title}</h2></Link>
-						<p className="text-xs opacity-60">
+						<Link href={`/blog/posts/${post.id}`}><h2 className="highlight text-[32px] font-bold sm:mb-0 mb-2">{post.title}</h2></Link>
+						<p className="text-xs opacity-60 text-right">
 							{new Date(post.date).toUTCString().substring(0, 16)}
 						</p>
 					</li>

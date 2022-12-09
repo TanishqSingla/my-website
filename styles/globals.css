@@ -60,3 +60,6 @@ main {
 .post-content > p {
 	@apply mb-2
 }
+.post-content > pre {
+	@apply dark:bg-slate-900 bg-slate-800 text-white p-4 rounded-lg my-6
+}
