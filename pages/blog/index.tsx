@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Link from "next/link";
 import { getPostData } from "../../lib/posts";
 
@@ -13,6 +14,11 @@ type BlogProps = {
 
 export default function Blog({ posts }: BlogProps) {
 	return (
+		<>
+		<Head>
+			<title>Blog | Tanishq Singla</title>
+			<meta name="description" content="Tanishq Singla's Blog" />
+		</Head>
 		<main>
 			<ul className="space-y-8">
 				{posts.map((post) => (
@@ -25,6 +31,7 @@ export default function Blog({ posts }: BlogProps) {
 				))}
 			</ul>
 		</main>
+</>
 	);
 }
 
