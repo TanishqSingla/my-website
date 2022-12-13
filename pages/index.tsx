@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { GrGithub, GrTwitter, GrLinkedin } from "react-icons/gr";
 import { IoMdDownload } from "react-icons/io";
 
@@ -8,17 +7,17 @@ export default function Home() {
 		{
 			name: "Github",
 			link: "https://www.github.com/TanishqSingla",
-			logo: <GrGithub size="24" color="#344e41" />,
+			logo: <GrGithub size="24" />,
 		},
 		{
 			name: "Twitter",
 			link: "https://www.twitter.com/TanishqSingla_",
-			logo: <GrTwitter size="24" color="#344e41" />,
+			logo: <GrTwitter size="24" />,
 		},
 		{
 			name: "LinkedIn",
 			link: "https://www.linkedin.com/in/tanishqsingla",
-			logo: <GrLinkedin size="24" color="#344e41" />,
+			logo: <GrLinkedin size="24" />,
 		},
 	];
 	return (
@@ -62,7 +61,7 @@ export default function Home() {
 					<h3>Find me on</h3>
 					<div className="social-links">
 						{socials.map((social) => (
-							<a href={social.link} key={social.name}>
+							<a href={social.link} key={social.name} className="dark:text-accent dark:font-bold text-primary-200">
 								{social.logo}
 								{social.name}
 							</a>
@@ -72,8 +71,8 @@ export default function Home() {
 				<div>
 					<h3>Download my resume</h3>
 					<div className="social-links">
-						<a href="../public/resume.pdf" download className="px-4">
-							<IoMdDownload color="#344e41" size="24" />
+						<a href="/resume.pdf" target="_blank" referrerPolicy="no-referrer" className="px-4 dark:text-accent dark:font-bold text-primary-200">
+							<IoMdDownload size="24" />
 							Resume
 						</a>
 					</div>

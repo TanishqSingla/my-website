@@ -35,7 +35,7 @@ export default function Header() {
 					</li>
 				</ul>
 				<div className="theme-switcher">
-					<button onClick={handleThemeSwitch}>
+					<button onClick={handleThemeSwitch} aria-label="Theme Switcher">
 						{isDark ? (
 							<BsSun color="black" />
 						) : (
