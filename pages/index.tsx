@@ -27,7 +27,9 @@ export default function Home() {
 				<title>Tanishq Singla</title>
 				<meta
 					name="description"
-					content="Hey there, I am Tanishq.\n I am a fullstack developer and I love to develop web-applicaitons.\nWelcome to my website"
+					content="Hey there, I am Tanishq.
+					I am a fullstack developer and I love to develop web-applicaitons.
+					Welcome to my website"
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
