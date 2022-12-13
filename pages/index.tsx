@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import { GrGithub, GrTwitter, GrLinkedin } from "react-icons/gr";
 import { IoMdDownload } from "react-icons/io";
 
@@ -24,20 +25,32 @@ export default function Home() {
 		<>
 			<Head>
 				<title>Tanishq Singla</title>
-				<meta name="description" content="Tanishq Singla's website" />
+				<meta
+					name="description"
+					content="Hey there, I am Tanishq.\n I am a fullstack developer and I love to develop web-applicaitons.\nWelcome to my website"
+				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main className="sm:space-y-8 space-y-4">
-				<div className="space-y-4">
-					<h1>
-						<span className="highlight">Hello</span> there.
-					</h1>
-					<h1>
-						Welcome to <span className="highlight">my website.</span>
-					</h1>
-					<h1>
-						I am <span className="highlight">Tanishq</span>
-					</h1>
+				<div className="flex justify-between">
+					<div className="sm:space-y-8 space-y-4">
+						<h1>
+							<span className="highlight">Hello</span> there.
+						</h1>
+						<h1>
+							Welcome to <span className="highlight">my website.</span>
+						</h1>
+						<h1>
+							I am <span className="highlight">Tanishq</span>
+						</h1>
+					</div>
+					<figure className="rounded-full overflow-hidden w-60 aspect-square">
+						<img
+							alt="Tanishq's pfp"
+							src="/pfp.webp"
+							className="h-full w-full object-cover"
+						/>
+					</figure>
 				</div>
 				<div className="about-me py-2">
 					<h3>About me</h3>
