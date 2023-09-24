@@ -15,7 +15,7 @@ If you're watching one of the tutorials or you've enrolled in a boot camp that b
 ```js
 const string = "hello closure";
 function print() {
-	console.log(string);
+  console.log(string);
 }
 ```
 
@@ -34,16 +34,16 @@ I don't remember the itihās (history of events) and what was I doing, I wanted 
 
 ```js
 function closure() {
-	let counter = 0;
-	function onlyExecutesOnce() {
-		if (counter == 1) {
-			return;
-		}
-		counter += 1;
-		console.log(counter);
-	}
+  let counter = 0;
+  function onlyExecutesOnce() {
+    if (counter == 1) {
+      return;
+    }
+    counter += 1;
+    console.log(counter);
+  }
 
-	return onlyExecutesOnce;
+  return onlyExecutesOnce;
 }
 
 /* testing the function */

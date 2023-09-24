@@ -3,64 +3,111 @@
 @tailwind components;
 
 @layer components {
-	.text-defaults {
-		@apply dark:text-white text-stone-700;
-	}
-	.highlight {
-		@apply text-primary-100 dark:text-accent;
-	}
-	.container {
-		@apply sm:max-w-5xl max-w-full mx-auto flex flex-col min-h-screen gap-4 px-4 sm:px-0;
-	}
-	.theme-switcher {
-		@apply rounded-full dark:bg-yellow-300 bg-fuchsia-900 h-8 w-8 grid place-items-center;
-	}
-	h1 {
-		@apply text-defaults text-4xl sm:text-5xl font-bold;
-	}
-	h2 {
-		@apply text-defaults text-3xl sm:text-4xl;
-	}
-	h3 {
-		@apply text-defaults sm:text-2xl text-xl my-2;
-	}
-	p {
-		@apply text-defaults;
-	}
+  .text-defaults {
+    @apply dark:text-white text-stone-700;
+  }
+  .highlight {
+    @apply text-primary-100 dark:text-accent;
+  }
+  .container {
+    @apply sm:max-w-5xl max-w-full mx-auto flex flex-col min-h-screen gap-4 px-4 sm:px-0;
+  }
+  .theme-switcher {
+    @apply rounded-full dark:bg-yellow-300 bg-fuchsia-900 h-8 w-8 grid place-items-center;
+  }
+  h1 {
+    @apply text-defaults text-4xl sm:text-5xl font-bold;
+  }
+  h2 {
+    @apply text-defaults text-3xl sm:text-4xl;
+  }
+  h3 {
+    @apply text-defaults sm:text-2xl text-xl my-2;
+  }
+  p {
+    @apply text-defaults;
+  }
 }
 
 body {
-	font-family: "Poppins", sans-serif;
-	transition: 0.3s ease-in;
-	@apply bg-surface selection:text-surface selection:bg-primary-200;
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s ease-in;
+  @apply bg-surface selection:text-surface selection:bg-primary-200;
 }
 .dark {
-	@apply bg-stone-900;
+  @apply bg-stone-900;
 }
 
 main {
-	@apply px-4;
+  @apply px-4;
 }
 
 .social-links {
-	@apply p-4 flex gap-8 flex-wrap;
+  @apply p-4 flex gap-8 flex-wrap;
 }
 .social-links > a {
-	transition: 0.3s ease-in;
-	@apply h-12 w-32 flex items-center justify-center gap-2 hover:bg-white rounded-md text-primary-100;
+  transition: 0.3s ease-in;
+  @apply h-12 w-32 flex items-center justify-center gap-2 hover:bg-white rounded-md text-primary-100;
+}
+
+code {
+  @apply dark:bg-zinc-800 bg-[#eaeef3]/40 text-sm p-1 rounded-md whitespace-pre-wrap;
 }
 
 .post-content h2,
 .post-content h3,
 .post-content h4 {
-	@apply my-6;
+  @apply my-6;
 }
 .post-content strong {
-	@apply dark:text-neutral-500 text-neutral-800;
+  @apply dark:text-neutral-500 text-neutral-800;
 }
 .post-content p {
-	@apply mb-2
+  @apply mb-2;
 }
 .post-content > pre {
-	@apply dark:bg-slate-900 bg-slate-800 text-white p-4 rounded-lg my-6;
+  @apply dark:bg-zinc-800 bg-[#eaeef3]/40 dark:text-white p-4 rounded-lg my-6 text-[#504945];
+}
+.post-content > pre code {
+  background: none;
+}
+
+.hljs-keyword {
+  @apply dark:text-[#bb9af7] text-[#8f3f71];
+}
+
+.hljs-title,
+.hljs-title.function_,
+.hljs-title.class_ {
+  @apply dark:text-[#7dcfff] text-[#b57614];
+}
+
+.hljs-attr {
+  @apply dark:text-[#bb9af7] text-[#af3a03];
+}
+
+.hljs-string {
+  @apply dark:text-[#9ece6a] text-[#79740e];
+}
+
+.hljs-regexp {
+  @apply dark:text-[#f7768e] text-[#427b58];
+}
+
+.hljs-property {
+  @apply dark:text-[#7dcfff];
+}
+
+.hljs-params,
+.hljs-number {
+  @apply dark:text-[#ff9e64] text-[#af3a03];
+}
+
+.hljs-comment {
+  @apply dark:text-[#565f89] text-[#bdae93];
+}
+
+.hljs-variable,
+.hljs-variable.language_ {
+  @apply dark:text-[#f7768e];
 }

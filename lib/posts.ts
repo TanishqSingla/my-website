@@ -1,58 +1,86 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import html from 'remark-html'
+import { Marked } from "marked";
+import { markedHighlight } from "marked-highlight";
+import hljs from "highlight.js";
+import { spawnSync } from "child_process";
 
 const postDirectory = path.join(process.cwd(), "posts");
 
+type PostsMeta = {
+  id: string;
+  title: string;
+  date: string;
+};
+
+export function getMetaData(filePath: string) {
+  const cmdPath = path.join(process.cwd(), "scripts/getMetaData");
+
+  const child = spawnSync(cmdPath, [filePath], { encoding: "utf-8" });
+
+  return JSON.parse(child.stdout.toString());
+}
+
+function readFile(filePath: string) {
+  const cmdPath = path.join(process.cwd(), "scripts/readFile");
+
+  const child = spawnSync(cmdPath, [filePath], { encoding: "utf-8" });
+  return child.stdout.toString();
+}
+
 export function getPostData() {
-	const fileNames = fs.readdirSync(postDirectory);
+  const fileNames = fs.readdirSync(postDirectory);
 
-	const posts = fileNames.map((fileName) => {
-		const id = fileName.replace(/\.md$/, "");
+  const posts = [] as PostsMeta[];
+  fileNames.forEach((fileName) => {
+    const id = fileName.replace(/\.md$/, "");
 
-		const fullPath = path.join(postDirectory, fileName);
-		const fileContents = fs.readFileSync(fullPath, "utf-8");
+    const fullPath = path.join(postDirectory, fileName);
 
-		const matterResult = matter(fileContents);
+    let metadata: Pick<PostsMeta, "title" | "date"> = getMetaData(fullPath);
 
-		return {
-			id,
-			...(matterResult.data as { title: string; date: string }),
-		};
-	});
+    if (!metadata) return;
+    posts.push({
+      id,
+      ...metadata,
+    });
+  });
 
-	return posts.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
+  return posts.sort((a, b) => (new Date(a.date) < new Date(b.date) ? 1 : -1));
 }
 
 export function getPostsIds() {
-	const fileName = fs.readdirSync(postDirectory);
+  const fileName = fs.readdirSync(postDirectory);
 
-	return fileName.map((fileName) => {
-		return {
-			params: {
-				id: fileName.replace(/\.md$/, ""),
-			},
-		};
-	});
+  return fileName.map((fileName) => {
+    return {
+      params: {
+        id: fileName.replace(/\.md$/, ""),
+      },
+    };
+  });
 }
 
 export async function getPostContent(id: string) {
-	const fullPath = path.join(postDirectory, `${id}.md`);
-	const fileContents = fs.readFileSync(fullPath, "utf-8");
+  const marked = new Marked(
+    markedHighlight({
+      langPrefix: "language-",
+      highlight(code, lang) {
+        const language = hljs.getLanguage(lang) ? lang : "plaintext";
+        return hljs.highlight(code, { language }).value;
+      },
+    }),
+  );
 
-	const matterResult = matter(fileContents);
+  const fullPath = path.join(postDirectory, `${id}.md`);
+  const fileContents = readFile(fullPath);
 
-	const processedContent = await remark()
-		.use(html)
-		.process(matterResult.content);
+  const markedHTML = marked.parse(fileContents);
+  const metaData = getMetaData(fullPath);
 
-	const contentHTML = processedContent.toString();
-
-	return {
-		id,
-		contentHTML,
-		...matterResult.data
-	}
+  return {
+    id,
+    markedHTML,
+    ...metaData,
+  };
 }
