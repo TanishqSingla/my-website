@@ -1,9 +1,11 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BsSun, BsMoonFill } from "react-icons/bs";
 
 export default function Header() {
   const [isDark, setIsDark] = useState(false);
+	const router = useRouter();
 
   useEffect(() => {
     const wasDarkMode = localStorage.getItem("darkMode");
@@ -24,13 +26,13 @@ export default function Header() {
     <header className="bg-gray-200/40 dark:bg-stone-700/40 dark:text-white sticky w-full px-4 py-4 top-4 self-start my-4 rounded-xl backdrop-blur-sm">
       <nav className="flex items-center">
         <ul className="flex gap-4 grow">
-          <li className="nav-link">
+          <li className={`nav-link ${router.pathname === "/"  ? 'active' : ''}`}>
             <Link href="/">Home</Link>
           </li>
           {/* <li>
 						<Link href="/projects">Projects</Link>
 					</li> */}
-          <li className="nav-link">
+          <li className={`nav-link ${router.pathname === "/blog"  ? 'active' : ''}`}>
             <Link href="/blog">Blog</Link>
           </li>
         </ul>
