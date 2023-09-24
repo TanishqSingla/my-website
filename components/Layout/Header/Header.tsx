@@ -24,13 +24,13 @@ export default function Header() {
     <header className="bg-gray-200/40 dark:bg-stone-700/40 dark:text-white sticky w-full px-4 py-4 top-4 self-start my-4 rounded-xl backdrop-blur-sm">
       <nav className="flex items-center">
         <ul className="flex gap-4 grow">
-          <li>
+          <li className="nav-link">
             <Link href="/">Home</Link>
           </li>
           {/* <li>
 						<Link href="/projects">Projects</Link>
 					</li> */}
-          <li>
+          <li className="nav-link">
             <Link href="/blog">Blog</Link>
           </li>
         </ul>

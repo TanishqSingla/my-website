@@ -18,12 +18,12 @@ export function getMetaData(filePath: string) {
 
   const child = spawnSync(cmdPath, [filePath], { encoding: "utf-8" });
 
-	try {
-  	return JSON.parse(child.stdout.toString());
-	} catch(err) {
-		console.log(err);
-		return {};
-	}
+  try {
+    return JSON.parse(child.stdout.toString());
+  } catch (err) {
+    console.log(err);
+    return {};
+  }
 }
 
 function readFile(filePath: string) {

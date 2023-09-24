@@ -3,24 +3,25 @@ import Image from "next/image";
 import { GrGithub, GrTwitter, GrLinkedin } from "react-icons/gr";
 import { IoMdDownload } from "react-icons/io";
 
+const socials = [
+  {
+    name: "Github",
+    link: "https://www.github.com/TanishqSingla",
+    logo: <GrGithub size="24" />,
+  },
+  {
+    name: "Twitter",
+    link: "https://www.twitter.com/TanishqSingla_",
+    logo: <GrTwitter size="24" />,
+  },
+  {
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/tanishqsingla",
+    logo: <GrLinkedin size="24" />,
+  },
+];
+
 export default function Home() {
-  const socials = [
-    {
-      name: "Github",
-      link: "https://www.github.com/TanishqSingla",
-      logo: <GrGithub size="24" />,
-    },
-    {
-      name: "Twitter",
-      link: "https://www.twitter.com/TanishqSingla_",
-      logo: <GrTwitter size="24" />,
-    },
-    {
-      name: "LinkedIn",
-      link: "https://www.linkedin.com/in/tanishqsingla",
-      logo: <GrLinkedin size="24" />,
-    },
-  ];
   return (
     <>
       <Head>
@@ -48,6 +49,8 @@ export default function Home() {
             <Image
               alt="Tanishq's pfp"
               src="/pfp.webp"
+              width={60 * 16}
+              height={60 * 16}
               className="h-full w-full object-cover"
             />
           </figure>

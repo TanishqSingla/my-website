@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
-		"deploy": "vercel build && vercel deploy --prebuilt"
+    "deploy": "vercel build && vercel deploy --prebuilt"
   },
   "dependencies": {
     "highlight.js": "^11.8.0",
