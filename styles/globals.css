@@ -46,13 +46,13 @@ body {
 	content: '';
 	height: 1px;
 	width: 100%;
-	background: white;
 	position: absolute;
 	bottom: -8px;
 	left: 0;
 	scale: 0 1;
 	transform-origin: right;
-	transition: scale 450ms ease-in-out;
+	transition: scale 300ms ease-in-out;
+	@apply dark:bg-surface bg-stone-900
 }
 .nav-link:hover::after, .nav-link:focus-visible::after {
 	transform-origin: left;
