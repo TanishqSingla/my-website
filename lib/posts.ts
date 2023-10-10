@@ -4,6 +4,7 @@ import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
 import { spawnSync } from "child_process";
+import ffi from 'ffi-napi';
 
 const postDirectory = path.join(process.cwd(), "posts");
 
@@ -13,17 +14,33 @@ type PostsMeta = {
   date: string;
 };
 
+function toCStringBuffer(str: string) {
+	str += '\0'
+	return Buffer.from(str);
+}
+
+const libPath = path.join(process.cwd(), 'libget_metadata.so')
+const libReadFilePath = path.join(process.cwd(), 'libreadfile.so');
+
+
+const lib = ffi.Library(libPath, {
+	get_metadata: ['string', ['string']]
+});
+
+const libRead = ffi.Library(libReadFilePath, {
+	readfile: ['string', ['string']]
+});
+
 export function getMetaData(filePath: string) {
-  const cmdPath = path.join(process.cwd(), "scripts/getMetaData");
-
-  const child = spawnSync(cmdPath, [filePath], { encoding: "utf-8" });
-
-  try {
-    return JSON.parse(child.stdout.toString());
-  } catch (err) {
-    console.log(err);
-    return {};
-  }
+	try {
+		//@ts-ignore
+		let metaDataJSON = lib.get_metadata(toCStringBuffer(filePath));
+		return JSON.parse(String(metaDataJSON));
+	}
+	catch (err) {
+    console.log("Failed at getMetaData(): ", err);
+		return {};
+	}
 }
 
 function readFile(filePath: string) {
@@ -78,9 +95,10 @@ export async function getPostContent(id: string) {
   );
 
   const fullPath = path.join(postDirectory, `${id}.md`);
-  const fileContents = readFile(fullPath);
+	//@ts-ignore
+  const fileContents = libRead.readfile(toCStringBuffer(fullPath));
 
-  const markedHTML = marked.parse(fileContents);
+  const markedHTML = marked.parse(String(fileContents) || '');
   const metaData = getMetaData(fullPath);
 
   return {
