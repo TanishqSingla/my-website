@@ -39,7 +39,7 @@ export default function Blog({ posts }: BlogProps) {
   );
 }
 
-export async function getStaticProps() {
+export function getStaticProps() {
   const posts = getPostData();
   return {
     props: {

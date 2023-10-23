@@ -1,4 +1,4 @@
-import { describe, afterEach, it, vi, expect } from "vitest";
+import { describe, it, expect } from "vitest";
 import { getMetaData } from "./posts";
 import path from "path";
 

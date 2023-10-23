@@ -3,7 +3,6 @@ import path from "path";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
-import { spawnSync } from "child_process";
 import ffi from 'ffi-napi';
 
 const postDirectory = path.join(process.cwd(), "posts");
@@ -43,13 +42,6 @@ export function getMetaData(filePath: string) {
 	}
 }
 
-function readFile(filePath: string) {
-  const cmdPath = path.join(process.cwd(), "scripts/readFile");
-
-  const child = spawnSync(cmdPath, [filePath], { encoding: "utf-8" });
-  return child.stdout.toString();
-}
-
 export function getPostData() {
   const fileNames = fs.readdirSync(postDirectory);
 
@@ -83,7 +75,7 @@ export function getPostsIds() {
   });
 }
 
-export async function getPostContent(id: string) {
+export function getPostContent(id: string) {
   const marked = new Marked(
     markedHighlight({
       langPrefix: "language-",
@@ -98,7 +90,7 @@ export async function getPostContent(id: string) {
 	//@ts-ignore
   const fileContents = libRead.readfile(toCStringBuffer(fullPath));
 
-  const markedHTML = marked.parse(String(fileContents) || '');
+  const markedHTML = marked.parse(fileContents || '');
   const metaData = getMetaData(fullPath);
 
   return {
