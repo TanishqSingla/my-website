@@ -19,6 +19,11 @@ const socials = [
     link: "https://www.linkedin.com/in/tanishqsingla",
     logo: <GrLinkedin size="24" />,
   },
+	{
+		name: "Peerlist",
+		link: "https://www.peerlist.io/tanishqsingla",
+		logo: <Image src={"/peerlist.svg"} alt="peerlist logo" width={24} height={24} /> 
+	}
 ];
 
 export default function Home() {
