@@ -95,6 +95,12 @@ code {
 .post-content > pre code {
   background: none;
 }
+.post-content ul {
+	@apply text-defaults list-disc pl-6 indent-1 my-4 text-sm
+ }
+.post-content ol {
+	@apply text-defaults list-decimal pl-6 indent-1 my-4 text-sm
+}
 
 .hljs-keyword {
   @apply dark:text-[#bb9af7] text-[#8f3f71];
