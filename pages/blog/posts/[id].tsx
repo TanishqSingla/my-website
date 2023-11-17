@@ -25,7 +25,7 @@ export default function Post(props: PostProps) {
 				/>
 			</main>
 			<hr className="mt-12 opacity-40 px-4 dark:border-gray-200/40 border-stone-700 rounded-lg" />
-			<footer className="p-4">
+			<footer className="text-defaults p-4">
 				Connect with me @{" "}
 				<a href="https://peerlist.io/tanishqsingla">
 					<Image

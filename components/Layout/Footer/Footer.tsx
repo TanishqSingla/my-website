@@ -1,6 +1,6 @@
 export default function Footer() {
 	return (
-		<footer className="grid grid-cols-12 gap-8 p-4">
+		<footer className="grid grid-cols-12 gap-8 p-4 text-defaults">
 			<div className="col-span-6">
 				<h4 className="text-lg">
 					<strong>Socials</strong>
