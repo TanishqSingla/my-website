@@ -21,7 +21,6 @@ struct kv {
 };
 
 
-
 std::string trim(std::string& s) {
 	std::string::iterator b_it = s.begin();
 	std::string::iterator e_it = s.end();
@@ -74,6 +73,7 @@ const char* dumpJSON(std::vector<kv>& pairs) {
 
 	json[strlen(json) + 1] = '\0';
 	char* result = (char*)malloc(strlen(json));
+	// Extremely Dangerous, DO NOT TRY THIS AT PROD!!
 	std::strcpy(result, json);
 	return result;
 }
