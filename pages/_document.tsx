@@ -14,7 +14,7 @@ export default function Document() {
 					href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
 					rel="stylesheet"
 				/>
-				<script src="/dark-theme.js"></script>
+				<script src="/dark-theme.js" async></script>
 				<script
 					src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"
 					async
