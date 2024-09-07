@@ -8,18 +8,15 @@ export default function Header() {
 	const router = useRouter();
 
 	useEffect(() => {
-		const wasDarkMode = localStorage.getItem("darkMode");
+		const wasDarkMode = document.documentElement.classList.contains('dark');
 
-		if (wasDarkMode === "true") {
-			setIsDark(true);
-			document.body.classList.add("dark");
-		}
+		setIsDark(wasDarkMode);
+		document.documentElement.classList.toggle("dark", wasDarkMode);
 	}, []);
 
 	const handleThemeSwitch = () => {
 		setIsDark(!isDark);
-		localStorage.setItem("darkMode", String(!isDark));
-		document.body.classList.toggle("dark");
+		document.documentElement.classList.toggle("dark", !isDark);
 	};
 
 	return (

@@ -32,10 +32,7 @@
 body {
 	font-family: "Poppins", sans-serif;
 	transition: 0.3s ease-in;
-	@apply bg-surface selection:text-surface selection:bg-primary-200;
-}
-.dark {
-	@apply bg-stone-900;
+	@apply bg-surface dark:bg-stone-900 selection:text-surface selection:bg-primary-200;
 }
 
 .nav-link {
