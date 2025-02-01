@@ -1,0 +1,303 @@
+---
+import PageLayout from '../layouts/BaseLayout.astro'
+import Section from '../components/Section.astro'
+import Card from '../components/Card.astro'
+import ProjectCard from '../components/ProjectCard.astro'
+import Label from '../components/Label.astro'
+import SkillLayout from '../components/SkillLayout.astro'
+import PostPreview from '@/components/blog/PostPreview.astro'
+
+import { Image } from 'astro:assets'
+import profilePicture from '../assets/profile-picture.jpg'
+
+import { getAllPosts, sortMDByDate } from '@/utils'
+
+const languages = ['Typescript', 'Javascript', 'Golang', 'Python']
+const frontend = ['Reactjs', 'HTML', 'CSS']
+const backend = ['MongoDB', 'DynamoDB', 'MySQL', 'Postgres']
+const others = ['Express', 'Figma', 'Git', 'Redux', 'Zustand']
+
+const MAX_POSTS = 10
+const allPosts = await getAllPosts()
+const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
+---
+
+<PageLayout meta={{ title: 'Home' }}>
+	<div class='flex w-full flex-col gap-y-10'>
+		<section class='flex flex-col items-center gap-y-7'>
+			<Image src={profilePicture} alt='Tanishq' class='h-28 w-auto rounded-full' loading='eager' />
+
+			<div class='flex flex-col items-center gap-y-4'>
+				<h1 class='text-3xl font-bold'>Tanishq Singla</h1>
+				<div class='flex flex-wrap justify-center gap-x-7 gap-y-3'>
+					<Label title='Email' as='a' href='mailto:tanishqsingla@zohomail.in'>
+						<i class='' slot='icon'>
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								width='24'
+								height='24'
+								viewBox='0 0 26 26'
+								fill='none'
+								stroke='currentColor'
+								stroke-width='2'
+								stroke-linecap='round'
+								stroke-linejoin='round'
+								class='lucide lucide-mail'
+								><rect width='22' height='18' x='2' y='4' rx='2'></rect><path
+									d='m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'></path></svg
+							></i
+						>
+					</Label>
+
+					<Label
+						title='Peerlist'
+						as='a'
+						href='https://www.peerlist.io/tanishqsingla'
+						target='_blank'
+					>
+						<svg
+							slot='icon'
+							width='24'
+							height='24'
+							viewBox='0 0 56 56'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+						>
+							<path
+								d='M28 0C6.22222 0 0 6.22222 0 28C0 49.7778 6.23778 56 28 56C49.7622 56 56 49.7778 56 28C56 6.22222 49.7622 0 28 0Z'
+								fill='currentColor'></path>
+							<path
+								fill-rule='evenodd'
+								clip-rule='evenodd'
+								d='M7.24755 7.24755C3.5875 10.9076 2 17.153 2 28C2 38.8461 3.59108 45.0918 7.25306 48.7521C10.9153 52.4127 17.1612 54 28 54C38.8388 54 45.0847 52.4127 48.7469 48.7521C52.4089 45.0918 54 38.8461 54 28C54 17.1539 52.4089 10.9082 48.7469 7.24787C45.0847 3.58733 38.8388 2 28 2C17.153 2 10.9076 3.5875 7.24755 7.24755ZM0 28C0 6.22222 6.22222 0 28 0C49.7622 0 56 6.22222 56 28C56 49.7778 49.7622 56 28 56C6.23778 56 0 49.7778 0 28Z'
+								fill='#24292E'></path>
+							<path
+								fill-rule='evenodd'
+								clip-rule='evenodd'
+								d='M27.0769 13H15V47H24.3846V39.8889H27.0769C34.7305 39.8889 41 33.9048 41 26.4444C41 18.984 34.7305 13 27.0769 13ZM24.3846 30.7778V22.1111H27.0769C29.6194 22.1111 31.6154 24.0864 31.6154 26.4444C31.6154 28.8024 29.6194 30.7778 27.0769 30.7778H24.3846Z'
+								fill='#24292E'></path>
+							<path
+								fill-rule='evenodd'
+								clip-rule='evenodd'
+								d='M18 12H29.0769C36.2141 12 42 17.5716 42 24.4444C42 31.3173 36.2141 36.8889 29.0769 36.8889H25.3846V44H18V12ZM25.3846 29.7778H29.0769C32.1357 29.7778 34.6154 27.39 34.6154 24.4444C34.6154 21.4989 32.1357 19.1111 29.0769 19.1111H25.3846V29.7778Z'
+								fill='white'></path>
+							<path
+								fill-rule='evenodd'
+								clip-rule='evenodd'
+								d='M17 11H29.0769C36.7305 11 43 16.984 43 24.4444C43 31.9048 36.7305 37.8889 29.0769 37.8889H26.3846V45H17V11ZM19 13V43H24.3846V35.8889H29.0769C35.6978 35.8889 41 30.7298 41 24.4444C41 18.1591 35.6978 13 29.0769 13H19ZM24.3846 18.1111H29.0769C32.6521 18.1111 35.6154 20.9114 35.6154 24.4444C35.6154 27.9775 32.6521 30.7778 29.0769 30.7778H24.3846V18.1111ZM26.3846 20.1111V28.7778H29.0769C31.6194 28.7778 33.6154 26.8024 33.6154 24.4444C33.6154 22.0864 31.6194 20.1111 29.0769 20.1111H26.3846Z'
+								fill='#24292E'></path>
+						</svg>
+					</Label>
+
+					<Label
+						title='Linkedin'
+						as='a'
+						href='https://www.linkedin.com/in/tanishqsingla/'
+						target='_blank'
+					>
+						<svg
+							slot='icon'
+							width='24'
+							height='24'
+							viewBox='0 0 15 15'
+							fill='none'
+							xmlns='http://www.w3.org/2000/svg'
+							><path
+								d='M2 1C1.44772 1 1 1.44772 1 2V13C1 13.5523 1.44772 14 2 14H13C13.5523 14 14 13.5523 14 13V2C14 1.44772 13.5523 1 13 1H2ZM3.05 6H4.95V12H3.05V6ZM5.075 4.005C5.075 4.59871 4.59371 5.08 4 5.08C3.4063 5.08 2.925 4.59871 2.925 4.005C2.925 3.41129 3.4063 2.93 4 2.93C4.59371 2.93 5.075 3.41129 5.075 4.005ZM12 8.35713C12 6.55208 10.8334 5.85033 9.67449 5.85033C9.29502 5.83163 8.91721 5.91119 8.57874 6.08107C8.32172 6.21007 8.05265 6.50523 7.84516 7.01853H7.79179V6.00044H6V12.0047H7.90616V8.8112C7.8786 8.48413 7.98327 8.06142 8.19741 7.80987C8.41156 7.55832 8.71789 7.49825 8.95015 7.46774H9.02258C9.62874 7.46774 10.0786 7.84301 10.0786 8.78868V12.0047H11.9847L12 8.35713Z'
+								fill='currentColor'
+								fill-rule='evenodd'
+								clip-rule='evenodd'></path></svg
+						>
+					</Label>
+
+					<Label title='Github' as='a' href='https://www.github.com/TanishqSingla/' target='_blank'>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							slot='icon'
+							width='24'
+							height='24'
+							viewBox='0 0 24 24'
+							fill='none'
+							stroke='currentColor'
+							stroke-width='2'
+							stroke-linecap='round'
+							stroke-linejoin='round'
+							class='lucide lucide-github'
+							><path
+								d='M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4'
+							></path><path d='M9 18c-4.51 2-5-2-7-2'></path></svg
+						>
+					</Label>
+				</div>
+			</div>
+		</section>
+
+		<Section title='About'>
+			<p class='text-muted-foreground'>
+				Hi, I am Tanishq, a web developer. I&quot;ve enjoyed turning ideas into functional, user-friendly websites. I focus on clean code and thoughtful design because I believe even the smallest details matter
+			</p>
+			<p class="text-muted-foreground">I&quot;ve had the chance to collaborate with great people in organisations ranging from small startups to large scale tech companies. Every time, I aim to solve real problems without overcomplicating things.</p>
+		</Section>
+		{
+			allPostsByDate.length > 0 && (
+				<Section title='Posts'>
+					<ul class='flex flex-col gap-y-2'>
+						{allPostsByDate.map((p) => (
+							<li class='flex flex-col gap-x-2 sm:flex-row'>
+								<PostPreview post={p} />
+							</li>
+						))}
+					</ul>
+				</Section>
+			)
+		}
+
+		<Section title='Projects'>
+			<div class='flex flex-col gap-y-3 sm:flex-row sm:gap-x-3 sm:gap-y-0'>
+				<ProjectCard
+					href='https://tanishqsingla-game-of-life.netlify.app/'
+					heading='Game of life'
+					subheading="Interactive Conway's game of life built using WASM and Rust"
+					imagePath='/src/assets/game-of-life.png'
+					altText='Example'
+					class='w-full sm:w-1/2'
+				/>
+				{
+					/* <ProjectCard
+					as='div'
+					heading='Coming soon...'
+					subheading=''
+					imagePath='/src/assets/coming-soon.png'
+					altText='Lorem, ipsum dolor sit'
+					class='w-full sm:w-1/2'
+				/>*/
+				}
+			</div>
+		</Section>
+
+		<Section title='Experience'>
+			<Card
+				heading='Zomato'
+				subheading='Software Engineer Intern'
+				date='Jun 2024 - Dec 2024'
+				imagePath=''
+				altText='Zomato'
+				imageClass='h-12 w-auto md:-left-16'
+			>
+				<ul class='ml-4 list-disc text-muted-foreground'>
+					<li>
+						Joined Web Platform team, created and maintained interfaces and tools to enable teams
+					</li>
+
+					<li>
+						Built and broke stuff @ <a href='https://weatherunion.com' class='text-foreground'
+							>weatherunion.com</a
+						>.
+					</li>
+				</ul>
+			</Card>
+			<Card
+				heading='TradeIndia'
+				subheading='Junior Software Developer'
+				date='Jul 2023 - Jun 2024'
+				imagePath=''
+				altText=''
+				imageClass='h-12 w-auto md:-left-16'
+			>
+				<ul class='ml-4 list-disc text-muted-foreground'>
+					<li>Helped migrating django monolith to microservices</li>
+					<li>Spun up search service in Golang from scratch</li>
+				</ul>
+			</Card>
+
+			<div id='collapsible' style='display: none;' class='space-y-4'>
+				<Card
+					heading='Affordmed'
+					subheading='Frontend Engineer Intern'
+					date='Jan 2023 - Jun 2023'
+					imagePath=''
+					altText=''
+					imageClass='h-12 w-auto md:-left-16'
+				>
+					<ul class='ml-4 list-disc text-muted-foreground'>
+						<li>Built consumer facing e-commerce website and created admin panels</li>
+					</ul>
+				</Card>
+				<Card
+					heading='Smallcase'
+					subheading='Frontend Engineer Intern'
+					date='Oct 2021 - Oct 2022'
+					imagePath=''
+					altText=''
+					imageClass='h-12 w-auto md:-left-16'
+				>
+					<ul class='ml-4 list-disc text-muted-foreground'>
+						<li>
+							Became a part of smallboard team, developed and maintained internal dashboards to
+							enable teams to achieve their goals faster
+						</li>
+					</ul>
+				</Card>
+			</div>
+
+			<button id='show-more-btn'>Show more</button>
+		</Section>
+
+		<Section title='Education'>
+			<Card
+				heading='Chitkara University'
+				subheading='B.E. Computer Science'
+				date='2019 - 2023'
+				imagePath=''
+				altText=''
+				imageClass='h-12 w-auto md:-left-16'
+			/>
+		</Section>
+
+		{
+			/*<Section title='Certifications'>
+			<Card
+				as='a'
+				heading='Lorem ipsum, dolor sit amet consectetur adipisicing.'
+				subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dicta magni consequuntur corrupti.'
+				date='Mar 2024 - Mar 2024'
+				imagePath='/src/assets/about-astro.png'
+				altText='Lorem, ipsum dolor sit'
+				imageClass='h-11 w-auto md:-left-16'
+				href='https://www.google.com'
+			/>
+			<Card
+				as='a'
+				heading='Lorem ipsum, dolor sit amet'
+				subheading='Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dicta.'
+				date='Mar 2029 - Mar 2032'
+				imagePath='/src/assets/about-astro.png'
+				altText='Lorem, ipsum dolor sit'
+				imageClass='h-11 w-auto md:-left-16'
+				href='https://www.google.com'
+			/>
+		</Section>*/
+		}
+
+		<Section title='Skills'>
+			<SkillLayout title='Languages' skills={languages} />
+			<SkillLayout title='Frontend' skills={frontend} />
+			<SkillLayout title='Backend' skills={backend} />
+			<SkillLayout title='Others' skills={others} />
+		</Section>
+	</div>
+</PageLayout>
+
+<script>
+	document.getElementById('show-more-btn')?.addEventListener('click', function () {
+		const collapsible = document.getElementById('collapsible') as HTMLDivElement
+
+		if (collapsible?.style.display == 'none') {
+			collapsible.style.display = 'block'
+			this.textContent = 'Show less'
+		} else {
+			collapsible.style.display = 'none'
+			this.textContent = 'Show more'
+		}
+	})
+</script>

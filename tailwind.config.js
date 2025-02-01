@@ -1,23 +1,69 @@
+import { fontFamily } from 'tailwindcss/defaultTheme'
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-	darkMode: "class",
-	content: [
-		"./pages/**/*.{js,ts,jsx,tsx}",
-		"./components/**/*.{js,ts,jsx,tsx}",
-	],
+const config = {
+	darkMode: ['class'],
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	safelist: ['dark'],
+	corePlugins: {
+		aspectRatio: false
+	},
+	plugins: [require('@tailwindcss/typography'), require('@tailwindcss/aspect-ratio')],
 	theme: {
+		container: {
+			center: true,
+			padding: '2rem',
+			screens: {
+				'2xl': '1400px'
+			}
+		},
 		extend: {
 			colors: {
+				border: 'hsl(var(--border) / <alpha-value>)',
+				input: 'hsl(var(--input) / <alpha-value>)',
+				ring: 'hsl(var(--ring) / <alpha-value>)',
+				background: 'hsl(var(--background) / <alpha-value>)',
+				foreground: 'hsl(var(--foreground) / <alpha-value>)',
 				primary: {
-					100: "#3A5A40",
-					200: "#344E41",
+					DEFAULT: 'hsl(var(--primary) / <alpha-value>)',
+					foreground: 'hsl(var(--primary-foreground) / <alpha-value>)'
 				},
-				secondary: "#A3B18A",
-				accent: "#588157",
-				surface: "#DAD7CD",
-				highlight: "#588157",
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
+					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)'
+				},
+				destructive: {
+					DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
+					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)'
+				},
+				muted: {
+					DEFAULT: 'hsl(var(--muted) / <alpha-value>)',
+					foreground: 'hsl(var(--muted-foreground) / <alpha-value>)'
+				},
+				accent: {
+					DEFAULT: 'hsl(var(--accent) / <alpha-value>)',
+					foreground: 'hsl(var(--accent-foreground) / <alpha-value>)'
+				},
+				popover: {
+					DEFAULT: 'hsl(var(--popover) / <alpha-value>)',
+					foreground: 'hsl(var(--popover-foreground) / <alpha-value>)'
+				},
+				card: {
+					DEFAULT: 'hsl(var(--card) / <alpha-value>)',
+					foreground: 'hsl(var(--card-foreground) / <alpha-value>)'
+				}
 			},
-		},
-	},
-	plugins: [],
-};
+			borderRadius: {
+				lg: 'var(--radius)',
+				md: 'calc(var(--radius) - 2px)',
+				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				sans: [...fontFamily.sans],
+				satoshi: ['Satoshi', 'sans']
+			}
+		}
+	}
+}
+
+export default config
