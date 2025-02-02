@@ -6,6 +6,7 @@ import ProjectCard from '../components/ProjectCard.astro'
 import Label from '../components/Label.astro'
 import SkillLayout from '../components/SkillLayout.astro'
 import PostPreview from '@/components/blog/PostPreview.astro'
+import ExperienceSection from '@/components/ExperienceSection'
 
 import { Image } from 'astro:assets'
 import profilePicture from '../assets/profile-picture.jpg'
@@ -134,9 +135,15 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 
 		<Section title='About'>
 			<p class='text-muted-foreground'>
-				Hi, I am Tanishq, a web developer. I&quot;ve enjoyed turning ideas into functional, user-friendly websites. I focus on clean code and thoughtful design because I believe even the smallest details matter
+				Hi, I am Tanishq, a web developer. I&quot;ve enjoyed turning ideas into functional,
+				user-friendly websites. I focus on clean code and thoughtful design because I believe even
+				the smallest details matter
 			</p>
-			<p class="text-muted-foreground">I&quot;ve had the chance to collaborate with great people in organisations ranging from small startups to large scale tech companies. Every time, I aim to solve real problems without overcomplicating things.</p>
+			<p class='text-muted-foreground'>
+				I&quot;ve had the chance to collaborate with great people in organisations ranging from
+				small startups to large scale tech companies. Every time, I aim to solve real problems
+				without overcomplicating things.
+			</p>
 		</Section>
 		{
 			allPostsByDate.length > 0 && (
@@ -175,73 +182,7 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 			</div>
 		</Section>
 
-		<Section title='Experience'>
-			<Card
-				heading='Zomato'
-				subheading='Software Engineer Intern'
-				date='Jun 2024 - Dec 2024'
-				imagePath=''
-				altText='Zomato'
-				imageClass='h-12 w-auto md:-left-16'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>
-						Joined Web Platform team, created and maintained interfaces and tools to enable teams
-					</li>
-
-					<li>
-						Built and broke stuff @ <a href='https://weatherunion.com' class='text-foreground'
-							>weatherunion.com</a
-						>.
-					</li>
-				</ul>
-			</Card>
-			<Card
-				heading='TradeIndia'
-				subheading='Junior Software Developer'
-				date='Jul 2023 - Jun 2024'
-				imagePath=''
-				altText=''
-				imageClass='h-12 w-auto md:-left-16'
-			>
-				<ul class='ml-4 list-disc text-muted-foreground'>
-					<li>Helped migrating django monolith to microservices</li>
-					<li>Spun up search service in Golang from scratch</li>
-				</ul>
-			</Card>
-
-			<div id='collapsible' style='display: none;' class='space-y-4'>
-				<Card
-					heading='Affordmed'
-					subheading='Frontend Engineer Intern'
-					date='Jan 2023 - Jun 2023'
-					imagePath=''
-					altText=''
-					imageClass='h-12 w-auto md:-left-16'
-				>
-					<ul class='ml-4 list-disc text-muted-foreground'>
-						<li>Built consumer facing e-commerce website and created admin panels</li>
-					</ul>
-				</Card>
-				<Card
-					heading='Smallcase'
-					subheading='Frontend Engineer Intern'
-					date='Oct 2021 - Oct 2022'
-					imagePath=''
-					altText=''
-					imageClass='h-12 w-auto md:-left-16'
-				>
-					<ul class='ml-4 list-disc text-muted-foreground'>
-						<li>
-							Became a part of smallboard team, developed and maintained internal dashboards to
-							enable teams to achieve their goals faster
-						</li>
-					</ul>
-				</Card>
-			</div>
-
-			<button id='show-more-btn'>Show more</button>
-		</Section>
+		<ExperienceSection client:load />
 
 		<Section title='Education'>
 			<Card
@@ -287,17 +228,3 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS)
 		</Section>
 	</div>
 </PageLayout>
-
-<script>
-	document.getElementById('show-more-btn')?.addEventListener('click', function () {
-		const collapsible = document.getElementById('collapsible') as HTMLDivElement
-
-		if (collapsible?.style.display == 'none') {
-			collapsible.style.display = 'block'
-			this.textContent = 'Show less'
-		} else {
-			collapsible.style.display = 'none'
-			this.textContent = 'Show more'
-		}
-	})
-</script>
