@@ -70,4 +70,4 @@ Here, we're relying on `init` function to initialize a variable. Now go has a re
 
 Go programming language is rich with open source repos to learn. People creating these repos range from students to professionals helping the world to learn from their code and for me simplifying my learning. Do show them some love by starring their repos.
 
-![Pikachu eating cake meme](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u8nwqr4sn3xdhrxueh3u.png)
+![Pikachu eating cake meme](pikachu-meme.png)
