@@ -86,7 +86,7 @@ const fullContent = [
 			</>,
 			<>
 				Enhanced website responsiveness, cutting LCP from over 4 seconds to under 2.5 seconds,
-				meeting Google&quot;s Core Web Vitals thresholds and significantly improving the site&quot;s
+				meeting Google&apos;s Core Web Vitals thresholds and significantly improving the site&qpos;s
 				SEO rankings
 			</>,
 			<>
