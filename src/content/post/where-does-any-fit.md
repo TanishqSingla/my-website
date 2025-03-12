@@ -27,7 +27,7 @@ Now product and fellow EMs make us delete and rewrite a typesafe version of that
 
 any is not going anywhere yet
 
-Let's write a useApi hook, which is you may have encountered often, this hooks returns a function that let's you call an api and handles it's state such as loading, success and error.
+Let's write a `useApi` hook, which is you may have encountered often, this hooks returns a function that let's you call an api and handles it's state such as loading, success and error.
 
 ```ts
 export function useApi({
@@ -74,17 +74,19 @@ Now let's make it typesafe.
 
 Well it's kinda tricky, we can start by filling in the pieces of type we know and rest as any. 
 
-We know that the onSuccess argument type would be the return type of the apiFn , which we can represent it this way.
+We know that the `onSuccess` argument type would be the return type of the `apiFn` , which we can represent it this way.
 
+```ts
 onSuccess(data: Awaited<ReturnType<typeof apiFn>>);
+```
 
-Similarly we can also write the types of the parameters for our callApi function
+Similarly we can also write the types of the parameters for our `callApi` function
 
 ```ts
 const callApi = async (params: Parameters<typeof apiFn>[0]);
 ```
 
-Our apiFn can have any type, so our mutation hook types also need to revolve around it, yep this sounds like a generics problem.
+Our `apiFn` can have any type, so our mutation hook types also need to revolve around it, yep this sounds like a generics problem.
 
 ```ts
 useApi<T>({ apiFn, onSuccess }: { apiFn: T, ...  })
@@ -94,7 +96,9 @@ If you use the function now, it will be typesafe. You can use autocomplete again
 
 But the typescript compiler is still complaining, you may encounter this error 
 
+```
 Type 'T' does not satisfy the constraint '(...args: any) => any'.
+```
 
 This is an easy error to fix, we just need to constraint our generic to be a function.
 
@@ -102,7 +106,7 @@ This is an easy error to fix, we just need to constraint our generic to be a fun
 useApi<T>({ apiFn, onSuccess }: { apiFn: T extends (...args) => any, ...  })
 ```
 
-And we're done. We made a useApi function fully typesafe. The function looks like this
+And we're done. We made a `useApi` function fully typesafe. The function looks like this
 
 ```ts
 export function useApi<T extends (...args: any) => any>({
@@ -145,10 +149,10 @@ export function useApi<T extends (...args: any) => any>({
 };
 ```
 
-Your eyes trained on countless code reviews might be looking at the use of any, and thinking if it can be typed more, what about using unknown .
+Your eyes trained on countless code reviews might be looking at the use of `any`, and thinking if it can be typed more, what about using `unknown`.
 
-You don't need to, use of any as a constraint is perfect here, which is the reason why they are present everywhere when you look at the Utility types. 
+You don't need to, use of `any` as a constraint is perfect here, which is the reason why they are present everywhere when you look at the Utility types. 
 
 Conclusions
 
-any works best when used in making constraints to your generics or utility types.
+`any` works best when used in making constraints to your generics or utility types.
