@@ -3,9 +3,6 @@ title: 'I was impatient and lazy so I created popover using dialog'
 description: 'Learn how to create a popover component using dialog tag'
 publishDate: '2025-03-20'
 tags: ['frontend', 'javascript', 'html', 'css', 'ui/ux']
-coverImage: 
-    src: "./cover.png"
-    alt: "Popover blog cover"
 ogImage: "./cover.png"
 ---
 
