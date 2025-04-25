@@ -2,6 +2,7 @@
 title: 'Creating better abstractions in React with Web-components'
 description: 'Learn how we can maximize using browser apis and create better abstractions for our React components'
 publishDate: '2025-04-21'
+tags: ['react', 'frontend', 'web', 'javascript']
 ---
 
 ## Why web-components?

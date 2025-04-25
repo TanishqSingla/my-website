@@ -2,6 +2,7 @@
 title: 'Book Review: The DevOps Handbook'
 description: 'This post contains my review of book The DevOps Handbook'
 publishDate: '2022-05-03'
+tags: ['books', 'devops']
 ---
 
 ## Introduction

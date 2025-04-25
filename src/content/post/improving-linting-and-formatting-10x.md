@@ -2,6 +2,7 @@
 title: 'Improving linting and formatting 10x'
 description: 'Optimizing formatting and linting performance to 10 times'
 publishDate: '2025-03-31'
+tags: ['dx', 'frontend']
 ---
 
 ## Introduction
