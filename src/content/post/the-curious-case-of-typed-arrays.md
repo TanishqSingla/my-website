@@ -104,7 +104,7 @@ Also my words had a limit of 200 character length, so the distance stored can't.
 
 `UintArray` ringed in my brain and I quickly sprayed my hands on the keyboard and came up with a potential optimisation.
 ```js
-function getEditDistanceOpt2(word1, word2) {
+function getEditDistanceUintArray(word1, word2) {
 	const len1 = word1.length;
 	const len2 = word2.length;
 
@@ -149,7 +149,7 @@ After scratching my head for a while and evaluating what could possibly be the c
 So I tested the theory out and instead of using `Uint8Array` I used `Float64Array`.
 
 ```js
-function getEditDistanceOpt2(word1, word2) {
+function getEditDistanceFloat64(word1, word2) {
 	const len1 = word1.length;
 	const len2 = word2.length;
 
