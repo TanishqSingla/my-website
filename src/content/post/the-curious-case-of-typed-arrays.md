@@ -50,9 +50,6 @@ So I setup a test bench using Deno. And did an initial run of the initial versio
 
 These were the results.
 
-```
-
-```
 
 | bench                              | avg (ns) | min     | max     | p75     | p99     | runs |
 | ---------------------------------- | -------- | ------- | ------- | ------- | ------- | ---- |
@@ -98,6 +95,7 @@ The results speak for themselves.
 | getDistance - original             | 1006.92  | 1000.69 | 1039.87 | 1008.73 | 1039.87 | 60   |
 | getDistance - pre-calculate length | 974.66   | 964.59  | 1050.67 | 974.85  | 1050.67 | 62   |
 | getDistance - 2 strings            | 355.41   | 346.82  | 360.55  | 356.80  | 359.54  | 151  |
+
 A 300% improvement in calculating the edit distance. Oh boy!
 
 ## Stepping in with assumptions
