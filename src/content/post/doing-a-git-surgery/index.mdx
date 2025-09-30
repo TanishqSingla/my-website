@@ -4,6 +4,8 @@ description: 'Extracting files from one git repo to another while preserving his
 publishDate: '2025-09-30'
 tags: ['git']
 ---
+import giphy from './giphy.gif';
+import Nono from './no-no.png'
 
 ## Introduction
 Recently I had to perform of what I call a surgery with git. Here's a quick rundown.
@@ -16,7 +18,7 @@ So to make it easier for other microservices, the protobuf files needed to be mo
 At Monkeys I want to make every contribution meaningful, and appreciate the time and effort spent by others.
 So this is where the challenge began, I wanted to extract the files without modifying or sacrificing any git commit history related to the file.
 
-![](giphy.gif)
+<img src={giphy.src} alt="mr. bean surgeon" />
 
 There were a bunch of solutions available, namely reposurgion git-filter-branch/git-filter-repo. But they were third party tools not git commands. 
 
@@ -36,7 +38,7 @@ git am <patch_file>
 
 However this created the nested folder that the parent branch had. 
 
-![](Pasted image 20250930205431.png)
+<img src={Nono.src} alt="not what I wanted" />
 
 This was not what I needed. After scrambling for a while and reading patch files, I realised that patch file contains a mail section and a diff.
 
